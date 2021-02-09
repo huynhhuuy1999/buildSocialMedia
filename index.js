@@ -25,7 +25,11 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use("/user",userRoute);
 app.use("/post",postRoute);
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static('public'));
+
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
